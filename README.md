@@ -145,6 +145,68 @@ Ensure that you have Python 3.x installed, along with the required libraries. Yo
 
 4. **Testing**:
    After training, the program will ask you to input an index (between 0 and 59999) of an image in the MNIST dataset. It will then display the image along with the predicted digit.
+### Results:
+
+![image](https://github.com/user-attachments/assets/5d483211-205b-4590-8039-9098664005d6)
+
+You can use this code to show more image in MNISTS dataset to check
+
+```python 
+def display_and_predict_images(num_images=5, images=None, labels=None, w_i_h=None, w_h_o=None, b_i_h=None, b_h_o=None):
+    """
+    Display and predict 'num_images' randomly selected images from the MNIST dataset.
+    
+    Args:
+        num_images (int): Number of images to display and predict.
+        images (ndarray): MNIST images dataset.
+        labels (ndarray): MNIST labels dataset.
+        w_i_h (ndarray): Input-to-hidden layer weights.
+        w_h_o (ndarray): Hidden-to-output layer weights.
+        b_i_h (ndarray): Hidden layer biases.
+        b_h_o (ndarray): Output layer biases.
+    """
+    # Select 'num_images' random indices
+    indices = np.random.choice(range(images.shape[0]), num_images, replace=False)
+
+    # Timing the predictions
+    start_time = time.time()
+
+    plt.figure(figsize=(10, 10))
+    
+    for i, index in enumerate(indices):
+        img = images[index]
+        label = labels[index]
+        
+        # Prepare image for prediction
+        img.shape += (1,)
+        h_pre = b_i_h + w_i_h @ img
+        h = 1 / (1 + np.exp(-h_pre))  # Sigmoid activation
+
+        o_pre = b_h_o + w_h_o @ h
+        o = 1 / (1 + np.exp(-o_pre))  # Sigmoid activation
+
+        predicted_label = np.argmax(o)
+        
+        # Plot each image in the grid
+        plt.subplot(num_images // 5, 5, i + 1)
+        plt.imshow(img.reshape(28, 28), cmap="Greys")
+        plt.title(f"Pred: {predicted_label}")
+        plt.axis("off")
+
+    plt.tight_layout()
+    plt.show()
+
+    # Time taken for the prediction
+    end_time = time.time()
+    time_taken = end_time - start_time
+    print(f"Time taken to predict {num_images} images: {time_taken:.4f} seconds")
+
+
+# Ask the user how many images they want to test
+num_images_to_test = int(input("Enter the number of images to test: "))
+display_and_predict_images(num_images_to_test, images=images, labels=labels, 
+                           w_i_h=w_i_h, w_h_o=w_h_o, b_i_h=b_i_h, b_h_o=b_h_o)
+```
 
 ## License
 
