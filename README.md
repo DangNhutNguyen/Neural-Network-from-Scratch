@@ -145,7 +145,8 @@ Ensure that you have Python 3.x installed, along with the required libraries. Yo
 
 4. **Testing**:
    After training, the program will ask you to input an index (between 0 and 59999) of an image in the MNIST dataset. It will then display the image along with the predicted digit.
-### Results:
+
+## Results
 
 ![image](https://github.com/user-attachments/assets/5d483211-205b-4590-8039-9098664005d6)
 
