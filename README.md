@@ -130,7 +130,7 @@ Ensure that you have Python 3.x installed, along with the required libraries. Yo
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/dangnhutnguyen/Neural-Network-from-Scratch.git
-   cd NeuralNetworkFromScratch
+   cd Neural-Network-from-Scratch
    ```
 
 2. **Run the Code**:
