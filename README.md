@@ -1,4 +1,4 @@
-# Neural Network from Scratch
+# Neural Network from Scratch - 915080
 
 This project demonstrates the implementation of a simple feedforward neural network from scratch using only NumPy. The neural network is trained on the MNIST dataset, which consists of handwritten digits. The network is trained using gradient descent and backpropagation.
 
